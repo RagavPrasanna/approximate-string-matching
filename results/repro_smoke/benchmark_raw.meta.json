@@ -1,0 +1,8 @@
+{
+  "inputs": [
+    "C:\\Users\\Ragav\\Desktop\\Study\\sem 5\\DAA\\PROJECT DAA\\results\\repro_smoke\\benchmark_run1.csv"
+  ],
+  "across_run_statistic": "min",
+  "rows": 121,
+  "note": "Each input value is already a per-case median; the combined value is the lower envelope across independent suite runs."
+}

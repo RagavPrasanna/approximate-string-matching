@@ -1,0 +1,31 @@
+﻿Approximate string matching demonstration
+Text    : ABCXDEFGABXDEFGABCDEF
+Pattern : ABCDEF
+Matches are reported by 0-based exclusive end position.
+
+k = 0
+  rolling    0.032 ms  21(d=0)
+  pruned     1.848 ms  21(d=0)
+  lv         0.218 ms  21(d=0)
+  kmp      21
+
+k = 1
+  rolling    0.049 ms  7(d=1), 14(d=1), 20(d=1), 21(d=0)
+  pruned     0.148 ms  7(d=1), 14(d=1), 20(d=1), 21(d=0)
+  lv         0.213 ms  7(d=1), 14(d=1), 20(d=1), 21(d=0)
+
+k = 2
+  rolling    0.024 ms  6(d=2), 7(d=1), 8(d=2), 13(d=2), 14(d=1), 15(d=2), 19(d=2), 20(d=1), 21(d=0)
+  pruned     0.090 ms  6(d=2), 7(d=1), 8(d=2), 13(d=2), 14(d=1), 15(d=2), 19(d=2), 20(d=1), 21(d=0)
+  lv         0.143 ms  6(d=2), 7(d=1), 8(d=2), 13(d=2), 14(d=1), 15(d=2), 19(d=2), 20(d=1), 21(d=0)
+
+k = 3
+  rolling    0.025 ms  3(d=3), 4(d=3), 5(d=3), 6(d=2), 7(d=1), 8(d=2), 9(d=3), 12(d=3), 13(d=2), 14(d=1), 15(d=2), 16(d=3), 18(d=3), 19(d=2), 20(d=1), 21(d=0)
+  pruned     0.102 ms  3(d=3), 4(d=3), 5(d=3), 6(d=2), 7(d=1), 8(d=2), 9(d=3), 12(d=3), 13(d=2), 14(d=1), 15(d=2), 16(d=3), 18(d=3), 19(d=2), 20(d=1), 21(d=0)
+  lv         0.385 ms  3(d=3), 4(d=3), 5(d=3), 6(d=2), 7(d=1), 8(d=2), 9(d=3), 12(d=3), 13(d=2), 14(d=1), 15(d=2), 16(d=3), 18(d=3), 19(d=2), 20(d=1), 21(d=0)
+
+Planted-mutation experiment:
+  k=0  n=800 m=40  matches=  6  time=4.752 ms
+  k=1  n=800 m=40  matches=  8  time=4.932 ms
+  k=2  n=800 m=40  matches= 18  time=4.487 ms
+  k=4  n=800 m=40  matches= 38  time=4.487 ms

@@ -1,0 +1,122 @@
+experiment,case,dataset,alphabet,n,m,k,algorithm,label,matches,median_ms,peak_kib,status
+adversarial,repetitive-n3000-m100-k3,repetitive-n3000-m100-k3,repetitive,3000,100,3,landau_vishkin,Landau-Vishkin + LCE,2904,34.093,1657.008,ok
+adversarial,repeat-AC-n3000-m100-k3,repeat-AC-n3000-m100-k3,binary,3000,100,3,landau_vishkin,Landau-Vishkin + LCE,2904,34.7206,1657.039,ok
+adversarial,prefix-trap-n3000-m100-k3,prefix-trap-n3000-m100-k3,dna,3000,100,3,landau_vishkin,Landau-Vishkin + LCE,0,30.7559,1322.742,ok
+adversarial,repetitive-n3000-m100-k3,repetitive-n3000-m100-k3,repetitive,3000,100,3,sellers_full,Sellers full matrix,2904,47.7321,2622.008,ok
+adversarial,repeat-AC-n3000-m100-k3,repeat-AC-n3000-m100-k3,binary,3000,100,3,sellers_full,Sellers full matrix,2904,48.5852,2622.008,ok
+adversarial,prefix-trap-n3000-m100-k3,prefix-trap-n3000-m100-k3,dna,3000,100,3,sellers_full,Sellers full matrix,0,46.4396,2374.688,ok
+adversarial,repetitive-n3000-m100-k3,repetitive-n3000-m100-k3,repetitive,3000,100,3,sellers_pruned,Sellers threshold-pruned,2904,216.4047,980.203,ok
+adversarial,repeat-AC-n3000-m100-k3,repeat-AC-n3000-m100-k3,binary,3000,100,3,sellers_pruned,Sellers threshold-pruned,2904,219.0029,980.203,ok
+adversarial,prefix-trap-n3000-m100-k3,prefix-trap-n3000-m100-k3,dna,3000,100,3,sellers_pruned,Sellers threshold-pruned,0,31.7196,980.203,ok
+adversarial,repetitive-n3000-m100-k3,repetitive-n3000-m100-k3,repetitive,3000,100,3,sellers_rolling,Sellers rolling rows,2904,46.4481,271.164,ok
+adversarial,repeat-AC-n3000-m100-k3,repeat-AC-n3000-m100-k3,binary,3000,100,3,sellers_rolling,Sellers rolling rows,2904,47.2234,271.164,ok
+adversarial,prefix-trap-n3000-m100-k3,prefix-trap-n3000-m100-k3,dna,3000,100,3,sellers_rolling,Sellers rolling rows,0,45.3679,47.297,ok
+alphabet,planted-binary-n3000-m80-k3,planted-binary-n3000-m80-k3,binary,3000,80,3,landau_vishkin,Landau-Vishkin + LCE,40,28.3062,1312.008,ok
+alphabet,planted-dna-n3000-m80-k3,planted-dna-n3000-m80-k3,dna,3000,80,3,landau_vishkin,Landau-Vishkin + LCE,47,28.2989,1313.297,ok
+alphabet,english-n3000-m80-k3,english-n3000-m80-k3,english,3000,80,3,landau_vishkin,Landau-Vishkin + LCE,1,26.5255,1310.117,ok
+alphabet,planted-binary-n3000-m80-k3,planted-binary-n3000-m80-k3,binary,3000,80,3,sellers_full,Sellers full matrix,40,38.7829,1907.914,ok
+alphabet,planted-dna-n3000-m80-k3,planted-dna-n3000-m80-k3,dna,3000,80,3,sellers_full,Sellers full matrix,47,38.1379,1908.555,ok
+alphabet,english-n3000-m80-k3,english-n3000-m80-k3,english,3000,80,3,sellers_full,Sellers full matrix,1,37.4716,1904.805,ok
+alphabet,planted-binary-n3000-m80-k3,planted-binary-n3000-m80-k3,binary,3000,80,3,sellers_pruned,Sellers threshold-pruned,40,27.9504,980.203,ok
+alphabet,planted-dna-n3000-m80-k3,planted-dna-n3000-m80-k3,dna,3000,80,3,sellers_pruned,Sellers threshold-pruned,47,19.3417,980.203,ok
+alphabet,english-n3000-m80-k3,english-n3000-m80-k3,english,3000,80,3,sellers_pruned,Sellers threshold-pruned,1,10.8617,980.203,ok
+alphabet,planted-binary-n3000-m80-k3,planted-binary-n3000-m80-k3,binary,3000,80,3,sellers_rolling,Sellers rolling rows,40,39.1935,47.297,ok
+alphabet,planted-dna-n3000-m80-k3,planted-dna-n3000-m80-k3,dna,3000,80,3,sellers_rolling,Sellers rolling rows,47,37.3922,47.297,ok
+alphabet,english-n3000-m80-k3,english-n3000-m80-k3,english,3000,80,3,sellers_rolling,Sellers rolling rows,1,36.9227,47.297,ok
+banded_distance,distance-n1000-k1,distance-n1000-k1,dna,1000,1000,1,distance_banded,Banded Levenshtein,,1.203533,0.609,ok
+banded_distance,distance-n1000-k1,distance-n1000-k1,dna,1000,1000,1,distance_rolling,Rolling-row Levenshtein,,154.9441,62.602,ok
+banded_distance,distance-n1000-k4,distance-n1000-k4,dna,1000,1000,4,distance_banded,Banded Levenshtein,,3.036167,0.703,ok
+banded_distance,distance-n1000-k4,distance-n1000-k4,dna,1000,1000,4,distance_rolling,Rolling-row Levenshtein,,155.4577,62.789,ok
+banded_distance,distance-n1000-k16,distance-n1000-k16,dna,1000,1000,16,distance_banded,Banded Levenshtein,,11.13835,1.078,ok
+banded_distance,distance-n1000-k16,distance-n1000-k16,dna,1000,1000,16,distance_rolling,Rolling-row Levenshtein,,169.9274,63.414,ok
+banded_distance,distance-n1000-k2,distance-n1000-k2,dna,1000,1001,2,distance_banded,Banded Levenshtein,,1.825281,0.641,ok
+banded_distance,distance-n1000-k2,distance-n1000-k2,dna,1000,1001,2,distance_rolling,Rolling-row Levenshtein,,154.401,62.742,ok
+banded_distance,distance-n1000-k8,distance-n1000-k8,dna,1000,1001,8,distance_banded,Banded Levenshtein,,5.11465,0.828,ok
+banded_distance,distance-n1000-k8,distance-n1000-k8,dna,1000,1001,8,distance_rolling,Rolling-row Levenshtein,,130.1983,63.055,ok
+banded_distance,distance-n1000-k32,distance-n1000-k32,dna,1000,1001,32,distance_banded,Banded Levenshtein,,21.3486,1.578,ok
+banded_distance,distance-n1000-k32,distance-n1000-k32,dna,1000,1001,32,distance_rolling,Rolling-row Levenshtein,,167.5509,64.055,ok
+memory_scaling,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,landau_vishkin,Landau-Vishkin + LCE,10,4.120717,205.219,ok
+memory_scaling,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,sellers_full,Sellers full matrix,10,6.09285,323.414,ok
+memory_scaling,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,sellers_pruned,Sellers threshold-pruned,10,2.555083,134.414,ok
+memory_scaling,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,sellers_rolling,Sellers rolling rows,10,5.97495,8.234,ok
+memory_scaling,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,landau_vishkin,Landau-Vishkin + LCE,12,8.124667,396.961,ok
+memory_scaling,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,sellers_full,Sellers full matrix,12,12.4181,640.039,ok
+memory_scaling,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,sellers_pruned,Sellers threshold-pruned,12,5.2621,251.578,ok
+memory_scaling,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,sellers_rolling,Sellers rolling rows,12,12.3377,16.047,ok
+memory_scaling,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,landau_vishkin,Landau-Vishkin + LCE,28,15.9892,885.719,ok
+memory_scaling,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,sellers_full,Sellers full matrix,28,25.0717,1274.227,ok
+memory_scaling,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,sellers_pruned,Sellers threshold-pruned,28,10.24825,581.883,ok
+memory_scaling,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,sellers_rolling,Sellers rolling rows,28,25.6976,31.672,ok
+memory_scaling,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,landau_vishkin,Landau-Vishkin + LCE,52,32.8319,1550.141,ok
+memory_scaling,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,sellers_full,Sellers full matrix,52,51.7426,2541.82,ok
+memory_scaling,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,sellers_pruned,Sellers threshold-pruned,52,22.175,1050.516,ok
+memory_scaling,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,sellers_rolling,Sellers rolling rows,52,50.7531,62.922,ok
+pattern_length,planted-dna-n4000-m20-k3,planted-dna-n4000-m20-k3,dna,4000,20,3,landau_vishkin,Landau-Vishkin + LCE,281,31.6926,1555.484,ok
+pattern_length,planted-dna-n4000-m20-k3,planted-dna-n4000-m20-k3,dna,4000,20,3,sellers_full,Sellers full matrix,281,12.4677,682.023,ok
+pattern_length,planted-dna-n4000-m20-k3,planted-dna-n4000-m20-k3,dna,4000,20,3,sellers_pruned,Sellers threshold-pruned,281,23.3313,1050.516,ok
+pattern_length,planted-dna-n4000-m20-k3,planted-dna-n4000-m20-k3,dna,4000,20,3,sellers_rolling,Sellers rolling rows,281,12.34085,62.922,ok
+pattern_length,planted-dna-n4000-m50-k3,planted-dna-n4000-m50-k3,dna,4000,50,3,landau_vishkin,Landau-Vishkin + LCE,112,33.6558,1549.164,ok
+pattern_length,planted-dna-n4000-m50-k3,planted-dna-n4000-m50-k3,dna,4000,50,3,sellers_full,Sellers full matrix,112,31.3145,1607.195,ok
+pattern_length,planted-dna-n4000-m50-k3,planted-dna-n4000-m50-k3,dna,4000,50,3,sellers_pruned,Sellers threshold-pruned,112,24.951,1050.516,ok
+pattern_length,planted-dna-n4000-m50-k3,planted-dna-n4000-m50-k3,dna,4000,50,3,sellers_rolling,Sellers rolling rows,112,30.262,62.922,ok
+pattern_length,planted-dna-n4000-m100-k3,planted-dna-n4000-m100-k3,dna,4000,100,3,landau_vishkin,Landau-Vishkin + LCE,45,35.4315,1550.875,ok
+pattern_length,planted-dna-n4000-m100-k3,planted-dna-n4000-m100-k3,dna,4000,100,3,sellers_full,Sellers full matrix,45,59.6079,3167.711,ok
+pattern_length,planted-dna-n4000-m100-k3,planted-dna-n4000-m100-k3,dna,4000,100,3,sellers_pruned,Sellers threshold-pruned,45,25.5473,1050.516,ok
+pattern_length,planted-dna-n4000-m100-k3,planted-dna-n4000-m100-k3,dna,4000,100,3,sellers_rolling,Sellers rolling rows,45,59.3204,62.922,ok
+pattern_length,planted-dna-n4000-m200-k3,planted-dna-n4000-m200-k3,dna,4000,200,3,landau_vishkin,Landau-Vishkin + LCE,18,37.7305,1587.789,ok
+pattern_length,planted-dna-n4000-m200-k3,planted-dna-n4000-m200-k3,dna,4000,200,3,sellers_full,Sellers full matrix,18,125.1106,6297.664,ok
+pattern_length,planted-dna-n4000-m200-k3,planted-dna-n4000-m200-k3,dna,4000,200,3,sellers_pruned,Sellers threshold-pruned,18,23.5094,1050.516,ok
+pattern_length,planted-dna-n4000-m200-k3,planted-dna-n4000-m200-k3,dna,4000,200,3,sellers_rolling,Sellers rolling rows,18,117.0798,62.922,ok
+pattern_length,planted-dna-n4000-m400-k3,planted-dna-n4000-m400-k3,dna,4000,400,3,landau_vishkin,Landau-Vishkin + LCE,9,40.8475,1625.203,ok
+pattern_length,planted-dna-n4000-m400-k3,planted-dna-n4000-m400-k3,dna,4000,400,3,sellers_full,Sellers full matrix,9,243.6641,12888.523,ok
+pattern_length,planted-dna-n4000-m400-k3,planted-dna-n4000-m400-k3,dna,4000,400,3,sellers_pruned,Sellers threshold-pruned,9,23.906,1050.547,ok
+pattern_length,planted-dna-n4000-m400-k3,planted-dna-n4000-m400-k3,dna,4000,400,3,sellers_rolling,Sellers rolling rows,9,236.4667,71.945,ok
+text_length,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,landau_vishkin,Landau-Vishkin + LCE,6,3.882971,205.156,ok
+text_length,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,sellers_full,Sellers full matrix,6,5.72008,323.102,ok
+text_length,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,sellers_pruned,Sellers threshold-pruned,6,2.1672,134.414,ok
+text_length,planted-dna-n500-m80-k2,planted-dna-n500-m80-k2,dna,500,80,2,sellers_rolling,Sellers rolling rows,6,5.671175,8.234,ok
+text_length,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,landau_vishkin,Landau-Vishkin + LCE,12,7.183675,396.961,ok
+text_length,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,sellers_full,Sellers full matrix,12,11.4214,640.039,ok
+text_length,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,sellers_pruned,Sellers threshold-pruned,12,4.6241,251.578,ok
+text_length,planted-dna-n1000-m80-k2,planted-dna-n1000-m80-k2,dna,1000,80,2,sellers_rolling,Sellers rolling rows,12,11.5363,16.047,ok
+text_length,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,landau_vishkin,Landau-Vishkin + LCE,33,15.2731,885.844,ok
+text_length,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,sellers_full,Sellers full matrix,33,24.1359,1274.648,ok
+text_length,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,sellers_pruned,Sellers threshold-pruned,33,10.43145,581.883,ok
+text_length,planted-dna-n2000-m80-k2,planted-dna-n2000-m80-k2,dna,2000,80,2,sellers_rolling,Sellers rolling rows,33,23.6712,31.672,ok
+text_length,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,landau_vishkin,Landau-Vishkin + LCE,43,30.8305,1548.883,ok
+text_length,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,sellers_full,Sellers full matrix,43,48.5743,2541.242,ok
+text_length,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,sellers_pruned,Sellers threshold-pruned,43,18.7814,1050.516,ok
+text_length,planted-dna-n4000-m80-k2,planted-dna-n4000-m80-k2,dna,4000,80,2,sellers_rolling,Sellers rolling rows,43,47.6002,62.922,ok
+text_length,planted-dna-n8000-m80-k2,planted-dna-n8000-m80-k2,dna,8000,80,2,landau_vishkin,Landau-Vishkin + LCE,106,63.7962,3326.18,ok
+text_length,planted-dna-n8000-m80-k2,planted-dna-n8000-m80-k2,dna,8000,80,2,sellers_full,Sellers full matrix,106,96.3186,5077.789,ok
+text_length,planted-dna-n8000-m80-k2,planted-dna-n8000-m80-k2,dna,8000,80,2,sellers_pruned,Sellers threshold-pruned,106,38.4408,2371.758,ok
+text_length,planted-dna-n8000-m80-k2,planted-dna-n8000-m80-k2,dna,8000,80,2,sellers_rolling,Sellers rolling rows,106,93.144,125.422,ok
+threshold,planted-dna-n4000-m100-k0,planted-dna-n4000-m100-k0,dna,4000,100,0,kmp,KMP (k=0),13,0.339718,2.484,ok
+threshold,planted-dna-n4000-m100-k0,planted-dna-n4000-m100-k0,dna,4000,100,0,landau_vishkin,Landau-Vishkin + LCE,13,23.2403,1120.062,ok
+threshold,planted-dna-n4000-m100-k0,planted-dna-n4000-m100-k0,dna,4000,100,0,sellers_full,Sellers full matrix,13,63.2527,3164.992,ok
+threshold,planted-dna-n4000-m100-k0,planted-dna-n4000-m100-k0,dna,4000,100,0,sellers_pruned,Sellers threshold-pruned,13,6.1529,1018.828,ok
+threshold,planted-dna-n4000-m100-k0,planted-dna-n4000-m100-k0,dna,4000,100,0,sellers_rolling,Sellers rolling rows,13,64.3313,62.922,ok
+threshold,planted-dna-n4000-m100-k1,planted-dna-n4000-m100-k1,dna,4000,100,1,landau_vishkin,Landau-Vishkin + LCE,27,28.6555,1550.344,ok
+threshold,planted-dna-n4000-m100-k1,planted-dna-n4000-m100-k1,dna,4000,100,1,sellers_full,Sellers full matrix,27,64.3331,3166.211,ok
+threshold,planted-dna-n4000-m100-k1,planted-dna-n4000-m100-k1,dna,4000,100,1,sellers_pruned,Sellers threshold-pruned,27,12.86465,1050.461,ok
+threshold,planted-dna-n4000-m100-k1,planted-dna-n4000-m100-k1,dna,4000,100,1,sellers_rolling,Sellers rolling rows,27,63.2629,62.922,ok
+threshold,planted-dna-n4000-m100-k2,planted-dna-n4000-m100-k2,dna,4000,100,2,landau_vishkin,Landau-Vishkin + LCE,45,32.7973,1550.938,ok
+threshold,planted-dna-n4000-m100-k2,planted-dna-n4000-m100-k2,dna,4000,100,2,sellers_full,Sellers full matrix,45,64.3701,3167.711,ok
+threshold,planted-dna-n4000-m100-k2,planted-dna-n4000-m100-k2,dna,4000,100,2,sellers_pruned,Sellers threshold-pruned,45,20.7299,1050.516,ok
+threshold,planted-dna-n4000-m100-k2,planted-dna-n4000-m100-k2,dna,4000,100,2,sellers_rolling,Sellers rolling rows,45,64.8858,62.922,ok
+threshold,planted-dna-n4000-m100-k4,planted-dna-n4000-m100-k4,dna,4000,100,4,landau_vishkin,Landau-Vishkin + LCE,55,43.2477,1552.195,ok
+threshold,planted-dna-n4000-m100-k4,planted-dna-n4000-m100-k4,dna,4000,100,4,sellers_full,Sellers full matrix,55,65.9068,3168.586,ok
+threshold,planted-dna-n4000-m100-k4,planted-dna-n4000-m100-k4,dna,4000,100,4,sellers_pruned,Sellers threshold-pruned,55,34.9096,1050.516,ok
+threshold,planted-dna-n4000-m100-k4,planted-dna-n4000-m100-k4,dna,4000,100,4,sellers_rolling,Sellers rolling rows,55,63.796,62.922,ok
+threshold,planted-dna-n4000-m100-k8,planted-dna-n4000-m100-k8,dna,4000,100,8,landau_vishkin,Landau-Vishkin + LCE,125,60.6863,1556.406,ok
+threshold,planted-dna-n4000-m100-k8,planted-dna-n4000-m100-k8,dna,4000,100,8,sellers_full,Sellers full matrix,125,65.9354,3174.367,ok
+threshold,planted-dna-n4000-m100-k8,planted-dna-n4000-m100-k8,dna,4000,100,8,sellers_pruned,Sellers threshold-pruned,125,60.9265,1050.516,ok
+threshold,planted-dna-n4000-m100-k8,planted-dna-n4000-m100-k8,dna,4000,100,8,sellers_rolling,Sellers rolling rows,125,66.2748,62.922,ok
+threshold,planted-dna-n4000-m100-k16,planted-dna-n4000-m100-k16,dna,4000,100,16,landau_vishkin,Landau-Vishkin + LCE,296,81.655,1565.852,ok
+threshold,planted-dna-n4000-m100-k16,planted-dna-n4000-m100-k16,dna,4000,100,16,sellers_full,Sellers full matrix,296,53.2665,3188.695,ok
+threshold,planted-dna-n4000-m100-k16,planted-dna-n4000-m100-k16,dna,4000,100,16,sellers_pruned,Sellers threshold-pruned,296,88.4018,1050.516,ok
+threshold,planted-dna-n4000-m100-k16,planted-dna-n4000-m100-k16,dna,4000,100,16,sellers_rolling,Sellers rolling rows,296,49.1951,62.922,ok
+threshold,planted-dna-n4000-m100-k32,planted-dna-n4000-m100-k32,dna,4000,100,32,landau_vishkin,Landau-Vishkin + LCE,522,190.2948,1581.719,ok
+threshold,planted-dna-n4000-m100-k32,planted-dna-n4000-m100-k32,dna,4000,100,32,sellers_full,Sellers full matrix,522,65.2665,3208.445,ok
+threshold,planted-dna-n4000-m100-k32,planted-dna-n4000-m100-k32,dna,4000,100,32,sellers_pruned,Sellers threshold-pruned,522,205.8551,1050.516,ok
+threshold,planted-dna-n4000-m100-k32,planted-dna-n4000-m100-k32,dna,4000,100,32,sellers_rolling,Sellers rolling rows,522,63.5248,76.352,ok

@@ -1,0 +1,10 @@
+{
+  "inputs": [
+    "results\\benchmark_run1.csv",
+    "results\\benchmark_run2.csv",
+    "results\\benchmark_run3.csv"
+  ],
+  "across_run_statistic": "min",
+  "rows": 121,
+  "note": "Each input value is already a per-case median; the combined value is the lower envelope across independent suite runs."
+}

@@ -1,0 +1,40 @@
+Approximate string matching - stress/soak results
+
+### small-pattern exact
+case=planted-dna-n10000-m10-k0 n=10000 m=10 k=0
+  sellers_full     time=    0.016 s matches=    333
+  sellers_rolling  time=    0.016 s matches=    333
+  sellers_pruned   time=    0.017 s matches=    333
+  landau_vishkin   time=    0.046 s matches=    333
+  KMP agrees with Sellers at k=0
+
+### medium
+case=planted-dna-n50000-m100-k3 n=50000 m=100 k=3
+  sellers_full     time=    0.745 s matches=    712
+  sellers_rolling  time=    0.721 s matches=    712
+  sellers_pruned   time=    0.346 s matches=    712
+  landau_vishkin   time=    0.537 s matches=    712
+
+### large-text short-pattern
+case=random-dna-n100000-m10-k2 n=100000 m=10 k=2
+  sellers_full     time=    0.156 s matches=    110
+  sellers_rolling  time=    0.155 s matches=    110
+  sellers_pruned   time=    0.827 s matches=    110
+  landau_vishkin   time=    1.931 s matches=    110
+
+### long-pattern
+case=planted-dna-n20000-m1000-k2 n=20000 m=1000 k=2
+  sellers_rolling  time=    7.508 s matches=     18
+  sellers_pruned   time=    0.242 s matches=     18
+  landau_vishkin   time=    0.495 s matches=     18
+
+### repetitive
+case=repetitive-n50000-m100-k3 n=50000 m=100 k=3
+  sellers_full     time=    1.576 s matches=  49904
+  sellers_rolling  time=    1.592 s matches=  49904
+  sellers_pruned   time=    8.238 s matches=  49904
+  landau_vishkin   time=    1.324 s matches=  49904
+
+### Peak memory on n=50,000, m=100, k=3
+  sellers_full    peak=   39517.5 KiB
+  sellers_rolling peak=     781.3 KiB

@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approximate String Matching — DAA Project</title>
+<style>
+  :root {
+    --ink: #17212b;
+    --muted: #536273;
+    --accent: #16697a;
+    --accent2: #d1495b;
+    --paper: #f7f4ee;
+    --panel: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #20262e;
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    scroll-snap-type: y mandatory;
+  }
+  .slide {
+    width: min(1100px, 94vw);
+    min-height: min(690px, 88vh);
+    margin: 3vh auto;
+    padding: 48px 58px;
+    background: var(--paper);
+    border-radius: 18px;
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  h1, h2 { margin: 0 0 18px; line-height: 1.12; }
+  h1 { font-size: 2.45rem; color: var(--accent); }
+  h2 { font-size: 1.75rem; color: var(--accent); }
+  h3 { margin: 0 0 12px; font-size: 1.15rem; color: var(--accent2); }
+  p, li { font-size: 1.06rem; line-height: 1.55; }
+  ul { padding-left: 1.3rem; }
+  code {
+    font-family: "Cascadia Code", Consolas, monospace;
+    background: #e9e4da;
+    padding: .1em .35em;
+    border-radius: 5px;
+  }
+  pre {
+    background: #1d2630;
+    color: #eef4f5;
+    padding: 18px 20px;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-size: .95rem;
+    line-height: 1.45;
+  }
+  pre code { background: transparent; padding: 0; }
+  .subtitle { color: var(--muted); font-size: 1.25rem; margin-top: -6px; }
+  .meta { color: var(--muted); margin-top: 26px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: center; }
+  .two ul { margin-top: 0; }
+  img { max-width: 100%; border-radius: 10px; background: white; }
+  .figure { text-align: center; }
+  .caption { color: var(--muted); font-size: .9rem; margin-top: 8px; }
+  .callout {
+    border-left: 5px solid var(--accent2);
+    padding: 12px 18px;
+    background: #fff6f2;
+    border-radius: 8px;
+    font-size: 1.03rem;
+  }
+  table { border-collapse: collapse; width: 100%; font-size: .96rem; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #ddd5c8; text-align: left; }
+  th { color: var(--accent); }
+  .small { font-size: .95rem; }
+  .kicker { color: var(--accent2); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .8rem; }
+  .footer { margin-top: auto; padding-top: 18px; color: var(--muted); font-size: .85rem; }
+  @media (max-width: 760px) {
+    .slide { padding: 28px 24px; }
+    .two { grid-template-columns: 1fr; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+  }
+  @media print {
+    body { background: white; }
+    .slide { box-shadow: none; border: 1px solid #ddd; page-break-after: always; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<section class="slide">
+  <div class="kicker">DAA Project · November 2026</div>
+  <h1>Approximate String Matching</h1>
+  <p class="subtitle">Design, Analysis, and Experimental Comparison of Algorithms</p>
+  <p class="meta"><strong>[Your name]</strong><br>Text · Pattern · edit distance · error threshold</p>
+</section>
+
+<section class="slide">
+  <h2>The problem</h2>
+  <p>Given text <code>T</code> of length <code>n</code>, pattern <code>P</code> of length <code>m</code>, and threshold <code>k</code>:</p>
+  <ul>
+    <li>Insertion, deletion, and substitution each cost 1</li>
+    <li>Report every end position whose best matching substring has distance <code>&le; k</code></li>
+    <li>Matches are returned as <code>(end, distance)</code>; starts are free</li>
+  </ul>
+  <pre><code>Text:    A B C X D E F G
+Pattern: A B C D E F
+
+k = 0: no match
+k = 1: end 7, distance 1</code></pre>
+</section>
+
+<section class="slide">
+  <h2>Three resources, not one</h2>
+  <div class="two">
+    <div>
+      <h3>Time</h3>
+      <p>Scan fewer DP cells or fewer diagonals.</p>
+      <h3>Memory</h3>
+      <p>Keep one row, one band, or active cells only.</p>
+      <h3>Error budget</h3>
+      <p>Exploit small <code>k</code> or long patterns.</p>
+    </div>
+    <div class="callout">
+      There is no single winning algorithm. The right choice depends on <code>k/m</code>, pattern length, memory, alphabet, and repetitive structure.
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Implemented methods</h2>
+  <table>
+    <tr><th>Method</th><th>Purpose</th></tr>
+    <tr><td>Naive + KMP</td><td>exact baseline, <code>k = 0</code></td></tr>
+    <tr><td>Levenshtein full / rolling</td><td>string-to-string distance</td></tr>
+    <tr><td>Banded Levenshtein</td><td>fast distance when true distance is small</td></tr>
+    <tr><td>Sellers full / rolling</td><td>semi-global approximate search</td></tr>
+    <tr><td>Threshold-pruned Sellers</td><td>safe active-cell pruning</td></tr>
+    <tr><td>Landau–Vishkin + LCE</td><td>diagonal-band search</td></tr>
+    <tr><td>Hamming</td><td>substitutions-only special case</td></tr>
+  </table>
+  <p class="small">All matching algorithms are implemented from scratch; no heuristic pruning.</p>
+</section>
+
+<section class="slide">
+  <h2>Sellers' semi-global recurrence</h2>
+  <pre><code>D[0][j] = 0   for every j     # free start anywhere
+D[i][0] = i                   # delete a pattern prefix
+D[i][j] = min(
+    D[i-1][j] + 1,                     # deletion
+    D[i][j-1] + 1,                     # insertion
+    D[i-1][j-1] + (P[i-1] != T[j-1])   # match/substitution
+)
+
+report end j whenever D[m][j] &lt;= k</code></pre>
+  <ul>
+    <li><code>D[0][j] = 0</code> turns global alignment into substring search</li>
+    <li><code>k = 0</code> returns exactly the KMP matches</li>
+    <li>Rolling rows: same time, <code>O(m)</code> memory</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Banding is safe only where it is proved</h2>
+  <div class="two">
+    <div>
+      <h3>Global distance</h3>
+      <p>For distance <code>&le; k</code>, every optimal path stays in</p>
+      <pre><code>|i - j| &le; k</code></pre>
+      <p>Time <code>O(k · min(m,n))</code>, space <code>O(k)</code>.</p>
+    </div>
+    <div>
+      <h3>Semi-global search</h3>
+      <pre><code>T = XXXXXABC
+P = ABC
+k = 0</code></pre>
+      <p>The match starts far from the main diagonal. A fixed band would miss it.</p>
+    </div>
+  </div>
+  <p class="callout">This project uses banding for <strong>distance</strong>, and safe alternatives for <strong>search</strong>: threshold pruning and Landau–Vishkin.</p>
+</section>
+
+<section class="slide">
+  <h2>Landau–Vishkin: jump over exact runs</h2>
+  <p>State: farthest reach on diagonal <code>h = column - row</code> with <code>e</code> edits.</p>
+  <pre><code>row = max(
+    F[e-1][h] + 1,     # substitution
+    F[e-1][h-1],       # insertion
+    F[e-1][h+1] + 1    # deletion
+)
+row += LCE(P[row:], T[row+h:])</code></pre>
+  <ul>
+    <li>Only <code>O(nk)</code> frontier states</li>
+    <li>One LCE query jumps over an arbitrarily long exact run</li>
+    <li>Zero-error state at every text start for semi-global search</li>
+    <li>Stopping points are reported so every end position is returned</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Correctness</h2>
+  <div class="two">
+    <div>
+      <ol>
+        <li>Known examples</li>
+        <li>Exhaustive binary inputs: <code>n &lt; 6</code>, <code>m &lt; 4</code>, <code>k &lt; 4</code></li>
+        <li>Randomized binary / DNA / English-like cases</li>
+        <li>Structural checks: valid end, valid distance, no duplicates</li>
+      </ol>
+    </div>
+    <div class="callout">
+      <strong>120 tests pass.</strong><br>
+      Every implementation matches brute force exactly.<br><br>
+      These are exact optimisation algorithms: precision and recall are 1.0 relative to the Levenshtein definition.
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Experimental setup</h2>
+  <ul>
+    <li>Inputs generated in memory; file reading excluded</li>
+    <li>Interleaved, batched timing rounds</li>
+    <li>Per-call medians; lower envelope of three independent suites</li>
+    <li>Peak memory via <code>tracemalloc</code></li>
+    <li>AMD Ryzen 7 7840HS · Windows 11 · Python 3.14</li>
+  </ul>
+  <p class="small">Workloads: planted mutations, binary/DNA/English alphabets, repetitive text, prefix traps, banded distance.</p>
+</section>
+
+<section class="slide">
+  <h2>Text length</h2>
+  <div class="figure">
+    <img src="../results/figures/runtime_vs_text_length.png" alt="Runtime versus text length">
+    <div class="caption">Fixed m = 80, k = 2. All methods grow linearly in n for fixed m; rolling and full Sellers overlap.</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Pattern length</h2>
+  <div class="figure">
+    <img src="../results/figures/runtime_vs_pattern_length.png" alt="Runtime versus pattern length">
+    <div class="caption">Fixed n = 4000, k = 3. DP is linear in m; pruning and Landau–Vishkin are nearly flat.</div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Error threshold and memory</h2>
+  <div class="two">
+    <div class="figure">
+      <img src="../results/figures/runtime_vs_k.png" alt="Runtime versus k">
+      <div class="caption">DP is flat in k; pruning and LV win only for small k.</div>
+    </div>
+    <div class="figure">
+      <img src="../results/figures/memory_scaling.png" alt="Memory scaling">
+      <div class="caption">Rolling rows are about 40× smaller than the full matrix.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Banded distance and adversarial inputs</h2>
+  <div class="two">
+    <div class="figure">
+      <img src="../results/figures/banded_distance.png" alt="Banded distance">
+      <div class="caption">7–129× faster for small true distance.</div>
+    </div>
+    <div class="figure">
+      <img src="../results/figures/adversarial.png" alt="Adversarial inputs">
+      <div class="caption">Repetitive text defeats threshold pruning; LV handles it well.</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Conclusions</h2>
+  <ul>
+    <li><strong>Rolling rows:</strong> space improvement only</li>
+    <li><strong>Threshold pruning:</strong> practical, input-dependent, same worst case</li>
+    <li><strong>Banded distance:</strong> real time improvement for small true distance</li>
+    <li><strong>Landau–Vishkin:</strong> robust for long patterns and repetitive text</li>
+    <li><strong>KMP:</strong> the right tool at <code>k = 0</code></li>
+  </ul>
+  <p class="callout">Choose the algorithm from the regime, not from a single benchmark table.</p>
+</section>
+
+<section class="slide">
+  <h2>Demo and reproduction</h2>
+  <pre><code>python -m asm.cli demo
+python -m asm.cli validate --cases 200
+python -m pytest -q
+python scripts/run_experiments.py</code></pre>
+  <ul>
+    <li>Full report: <code>docs/REPORT.md</code></li>
+    <li>Implementations: <code>asm/algorithms.py</code></li>
+    <li>Tests: <code>tests/test_algorithms.py</code></li>
+    <li>Results and figures: <code>results/</code></li>
+  </ul>
+  <p class="footer">Use arrow keys or PageDown to advance. Print to PDF for slides.</p>
+</section>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let current = 0;
+  function go(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides[current].scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+  window.addEventListener('keydown', (event) => {
+    if (['ArrowDown', 'PageDown', 'ArrowRight', ' '].includes(event.key)) {
+      event.preventDefault(); go(current + 1);
+    }
+    if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(event.key)) {
+      event.preventDefault(); go(current - 1);
+    }
+    if (event.key === 'Home') { go(0); }
+    if (event.key === 'End') { go(slides.length - 1); }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-11-14T12:52:45",
+  "python": "3.14.4",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+  "repeats": 1,
+  "timing": "median per-call wall time; algorithms interleaved, batched",
+  "elapsed_seconds": 153.539
+}
